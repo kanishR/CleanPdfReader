@@ -39,6 +39,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.kash.core.domain.Bookmark
 import com.raywenderlich.android.majesticreader.Document
 import com.raywenderlich.android.majesticreader.framework.Interactors
 import com.raywenderlich.android.majesticreader.framework.MajesticViewModel
@@ -57,7 +58,7 @@ class ReaderViewModel(application: Application, interactors: Interactors) : Maje
 
   val document = MutableLiveData<Document>()
 
-  val bookmarks = MediatorLiveData<List<_root_ide_package_.com.kanish.android.pdfreader.Bookmark>>().apply {
+  val bookmarks = MediatorLiveData<List<Bookmark>>().apply {
     // TODO add sources
   }
 
@@ -112,7 +113,7 @@ class ReaderViewModel(application: Application, interactors: Interactors) : Maje
     // TODO open document
   }
 
-  fun openBookmark(bookmark: _root_ide_package_.com.kanish.android.pdfreader.Bookmark) {
+  fun openBookmark(bookmark: Bookmark) {
     openPage(bookmark.page)
   }
 

@@ -28,17 +28,6 @@
  * THE SOFTWARE.
  */
 
-package com.kanish.android.pdfreader
+package com.kash.core.domain
 
-import java.io.Serializable
-
-data class Document(
-    val url: String,
-    val name: String,
-    val size: Int,
-    val thumbnail: String
-): Serializable {
-  companion object {
-    val EMPTY = Document("", "", 0, "")
-  }
-}
+data class Bookmark (val id: Int = 0, val page: Int)

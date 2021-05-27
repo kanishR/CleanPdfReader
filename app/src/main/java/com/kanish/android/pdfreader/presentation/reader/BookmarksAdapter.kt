@@ -35,12 +35,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.kash.core.domain.Bookmark
 import com.raywenderlich.android.majesticreader.R
 import kotlinx.android.synthetic.main.item_bookmark.view.*
 
 class BookmarksAdapter(
-        private val bookmarks: MutableList<_root_ide_package_.com.kanish.android.pdfreader.Bookmark> = mutableListOf(),
-        private val itemClickListener: (_root_ide_package_.com.kanish.android.pdfreader.Bookmark) -> Unit
+        private val bookmarks: MutableList<Bookmark> = mutableListOf(),
+        private val itemClickListener: (Bookmark) -> Unit
 ) : RecyclerView.Adapter<BookmarksAdapter.ViewHolder>() {
 
   class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -64,7 +65,7 @@ class BookmarksAdapter(
     holder.itemView.setOnClickListener { itemClickListener.invoke(bookmarks[position]) }
   }
 
-  fun update(newBookmarks: List<_root_ide_package_.com.kanish.android.pdfreader.Bookmark>) {
+  fun update(newBookmarks: List<Bookmark>) {
     bookmarks.clear()
     bookmarks.addAll(newBookmarks)
 
