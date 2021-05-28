@@ -31,15 +31,27 @@
 package com.kanish.android.pdfreader.framework
 
 import android.app.Application
+import com.kash.core.data.BookmarkRepository
+import com.kash.core.data.DocumentRepository
+import com.kash.core.interactor.*
 
 class MajesticReaderApplication : Application() {
 
   override fun onCreate() {
     super.onCreate()
+    val bookmarkRepository=BookmarkRepository(RoomBookMarkDataSource(this))
+    val  documentRepository=DocumentRepository(RoomDocumentDataSource(this),InMemoryOpenDocumentDataSource())
 
     MajesticViewModelFactory.inject(
         this,
-        Interactors()
+        Interactors(AddBookMark(bookmarkRepository),
+                GetBookMarks(bookmarkRepository),
+                RemoveBookMark(bookmarkRepository),
+                AddDocument(documentRepository),
+                GetDocuments(documentRepository),
+                RemoveDocument(documentRepository),
+                GetOpenDocuments(documentRepository),
+                SetOpenDocument(documentRepository))
     )
   }
 }

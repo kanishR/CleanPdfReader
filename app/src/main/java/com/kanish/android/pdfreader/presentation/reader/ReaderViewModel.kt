@@ -39,10 +39,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.kanish.android.pdfreader.framework.Interactors
+import com.kanish.android.pdfreader.framework.MajesticViewModel
 import com.kash.core.domain.Bookmark
-import com.raywenderlich.android.majesticreader.Document
-import com.raywenderlich.android.majesticreader.framework.Interactors
-import com.raywenderlich.android.majesticreader.framework.MajesticViewModel
+import com.kash.core.domain.Document
 import java.io.IOException
 
 class ReaderViewModel(application: Application, interactors: Interactors) : MajesticViewModel
@@ -85,7 +85,7 @@ class ReaderViewModel(application: Application, interactors: Interactors) : Maje
   val renderer = MediatorLiveData<PdfRenderer>().apply {
     addSource(document) {
       try {
-        val pdfRenderer = PdfRenderer(getFileDescriptor(Uri.parse(it.url)))
+        val pdfRenderer = PdfRenderer(getFileDescriptor(Uri.parse(it.url))!!)
         value = pdfRenderer
       } catch (e: IOException) {
         e.printStackTrace()

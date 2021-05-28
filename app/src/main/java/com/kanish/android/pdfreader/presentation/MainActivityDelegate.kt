@@ -30,7 +30,8 @@
 
 package com.kanish.android.pdfreader.presentation
 
-import com.raywenderlich.android.majesticreader.Document
+import com.kash.core.domain.Document
+
 
 interface MainActivityDelegate {
 

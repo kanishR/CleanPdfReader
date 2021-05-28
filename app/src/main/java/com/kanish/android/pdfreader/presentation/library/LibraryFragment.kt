@@ -41,10 +41,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
-import com.raywenderlich.android.majesticreader.R
-import com.raywenderlich.android.majesticreader.framework.MajesticViewModelFactory
-import com.raywenderlich.android.majesticreader.presentation.IntentUtil.createOpenIntent
-import com.raywenderlich.android.majesticreader.presentation.MainActivityDelegate
+import com.kanish.android.pdfreader.R
+import com.kanish.android.pdfreader.framework.MajesticViewModelFactory
+import com.kanish.android.pdfreader.presentation.IntentUtil.createOpenIntent
+import com.kanish.android.pdfreader.presentation.MainActivityDelegate
 import kotlinx.android.synthetic.main.fragment_library.*
 
 class LibraryFragment : Fragment() {
@@ -59,7 +59,7 @@ class LibraryFragment : Fragment() {
 
   private lateinit var mainActivityDelegate: MainActivityDelegate
 
-  override fun onAttach(context: Context?) {
+  override fun onAttach(context: Context) {
     super.onAttach(context)
 
     try {
@@ -83,7 +83,9 @@ class LibraryFragment : Fragment() {
 
     viewModel = ViewModelProviders.of(this, MajesticViewModelFactory)
         .get(LibraryViewModel::class.java)
-    viewModel.documents.observe(this, Observer { adapter.update(it) })
+    viewModel.documents.observe(this, Observer {
+      adapter.update(it)
+    })
     viewModel.loadDocuments()
 
     fab.setOnClickListener { startActivityForResult(createOpenIntent(), READ_REQUEST_CODE) }
@@ -92,7 +94,7 @@ class LibraryFragment : Fragment() {
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     // Process open file intent.
     if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-      data?.data?.also { uri -> viewModel.addDocument(uri) }
+      data?.data?.also { uri -> viewModel.addDocument(uri.toString()) }
     } else {
       super.onActivityResult(requestCode, resultCode, data)
     }

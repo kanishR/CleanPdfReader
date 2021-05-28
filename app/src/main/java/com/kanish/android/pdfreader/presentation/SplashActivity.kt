@@ -36,7 +36,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Window
 import android.view.WindowManager
-import com.raywenderlich.android.majesticreader.R
+import com.kanish.android.pdfreader.R
 
 /**
  * Splash Screen with the app icon and name at the center, this is also the launch screen and

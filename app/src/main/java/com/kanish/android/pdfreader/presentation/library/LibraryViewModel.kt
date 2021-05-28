@@ -31,11 +31,16 @@
 package com.kanish.android.pdfreader.presentation.library
 
 import android.app.Application
-import android.net.Uri
+
 import androidx.lifecycle.MutableLiveData
-import com.raywenderlich.android.majesticreader.Document
-import com.raywenderlich.android.majesticreader.framework.Interactors
-import com.raywenderlich.android.majesticreader.framework.MajesticViewModel
+import com.kanish.android.pdfreader.framework.Interactors
+import com.kanish.android.pdfreader.framework.MajesticViewModel
+import com.kash.core.domain.Document
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 
 class LibraryViewModel(application: Application, interactors: Interactors)
   : MajesticViewModel(application, interactors) {
@@ -43,15 +48,34 @@ class LibraryViewModel(application: Application, interactors: Interactors)
   val documents: MutableLiveData<List<Document>> = MutableLiveData()
 
   fun loadDocuments() {
-    // TODO start loading documents
+   // GlobalScope.launch(Dispatchers.IO){}
+    GlobalScope.launch {
+      documents.postValue(interactors.getDocuments())
+
+    }
   }
 
-  fun addDocument(uri: Uri) {
-    // TODO add a new document
+  fun addDocument(uri: String) {
+    GlobalScope.launch {
+      try {
+
+
+        withContext(Dispatchers.IO) {
+          interactors.addDocument(Document(uri, "", 0, ""))
+        }
+      }catch (e:Exception){
+        e.printStackTrace()
+      }
+
+    }
+
     loadDocuments()
   }
 
   fun setOpenDocument(document: Document) {
-    // TODO set currently open document
+    GlobalScope.launch {
+      interactors.setOpenDocument(document)
+    }
+
   }
 }

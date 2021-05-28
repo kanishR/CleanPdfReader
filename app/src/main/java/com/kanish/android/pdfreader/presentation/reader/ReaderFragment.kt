@@ -41,11 +41,12 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.raywenderlich.android.majesticreader.R
-import com.raywenderlich.android.majesticreader.Document
-import com.raywenderlich.android.majesticreader.framework.MajesticViewModelFactory
-import com.raywenderlich.android.majesticreader.presentation.IntentUtil
-import com.raywenderlich.android.majesticreader.presentation.library.LibraryFragment
+import com.kanish.android.pdfreader.R
+import com.kanish.android.pdfreader.framework.MajesticViewModelFactory
+import com.kanish.android.pdfreader.presentation.IntentUtil
+import com.kanish.android.pdfreader.presentation.library.LibraryFragment
+import com.kash.core.domain.Document
+
 import kotlinx.android.synthetic.main.fragment_reader.*
 
 class ReaderFragment : Fragment() {

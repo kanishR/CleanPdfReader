@@ -17,10 +17,9 @@
     </activity>
 
     <!-- Splash Activity -->
-    <activity android:name="com.kanish.android.pdfreader.presentation.SplashActivity">
+    <activity android:name=".presentation.SplashActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
-
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>

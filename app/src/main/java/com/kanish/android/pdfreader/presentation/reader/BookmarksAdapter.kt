@@ -35,8 +35,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.kanish.android.pdfreader.R
 import com.kash.core.domain.Bookmark
-import com.raywenderlich.android.majesticreader.R
+
 import kotlinx.android.synthetic.main.item_bookmark.view.*
 
 class BookmarksAdapter(

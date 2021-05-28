@@ -38,10 +38,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.raywenderlich.android.majesticreader.Document
-import com.raywenderlich.android.majesticreader.R
-import com.raywenderlich.android.majesticreader.presentation.library.LibraryFragment
-import com.raywenderlich.android.majesticreader.presentation.reader.ReaderFragment
+import com.kanish.android.pdfreader.R
+import com.kanish.android.pdfreader.presentation.library.LibraryFragment
+import com.kanish.android.pdfreader.presentation.reader.ReaderFragment
+import com.kash.core.domain.Document
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
@@ -95,9 +95,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
   }
 
   override fun openDocument(document: Document) {
-    nav_view.menu.findItem(R.id.nav_reader).isChecked = true
-    supportFragmentManager.beginTransaction()
-        .replace(R.id.content, ReaderFragment.newInstance(document))
-        .commit()
+
+
+      nav_view.menu.findItem(R.id.nav_reader).isChecked = true
+      supportFragmentManager.beginTransaction()
+              .replace(R.id.content, ReaderFragment.newInstance(document))
+              .commit()
+
   }
+
 }
